@@ -1,0 +1,52 @@
+{
+  "name": "wecycle-api",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/wecycle/api/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/wecycle/api",
+        "main": "apps/wecycle/api/src/main.ts",
+        "tsConfig": "apps/wecycle/api/tsconfig.app.json",
+        "isolatedConfig": true,
+        "webpackConfig": "apps/wecycle/api/webpack.config.js",
+        "generatePackageJson": true
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "externalDependencies": "none"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "wecycle-api:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "wecycle-api:build:development"
+        },
+        "production": {
+          "buildTarget": "wecycle-api:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/wecycle/api/**/*.ts"]
+      }
+    }
+  },
+  "tags": ["wecycle-api"]
+}

@@ -1,0 +1,56 @@
+{
+  "name": "wecycle-web",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/wecycle/web",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/wecycle/web",
+        "outputPath": "dist/apps/wecycle/web"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/wecycle/web"
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4201,
+        "buildTarget": "wecycle-web:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "wecycle-web:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "wecycle-web:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nx/next:export",
+      "options": {
+        "buildTarget": "wecycle-web:build:production"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/wecycle/web/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": ["wecycle-web"]
+}

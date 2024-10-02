@@ -1,0 +1,8 @@
+{
+  "name": "homezz-http-client",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/homezz/http-client/src",
+  "projectType": "library",
+  "targets": {},
+  "tags": ["http client"]
+}

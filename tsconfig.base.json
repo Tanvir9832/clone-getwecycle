@@ -1,0 +1,37 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@tanbel/homezz/components": ["libs/homezz/components/src/index.ts"],
+      "@tanbel/homezz/http-client": ["libs/homezz/http-client/src/index.ts"],
+      "@tanbel/homezz/socket-client": [
+        "libs/homezz/socket-client/src/index.ts"
+      ],
+      "@tanbel/homezz/types": ["libs/homezz/types/src/index.ts"],
+      "@tanbel/homezz/utils": ["libs/homezz/utils/src/index.ts"],
+      "@tanbel/icons": ["libs/icons/src/index.ts"],
+      "@tanbel/illustrations": ["libs/illustrations/src/index.ts"],
+      "@tanbel/react-icons": ["libs/react-icons/src/index.ts"],
+      "@tanbel/react-native-icons": ["libs/react-native-icons/src/index.ts"],
+      "@tanbel/react-native-ui": ["libs/react-native-ui/src/index.ts"],
+      "@tanbel/react-native-utils": ["libs/react-native-utils/src/index.ts"],
+      "@tanbel/react-ui": ["libs/react-ui/src/index.ts"],
+      "@tanbel/types": ["libs/types/src/index.ts"],
+      "@tanbel/utils": ["libs/utils/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

@@ -1,0 +1,55 @@
+{
+  "name": "wecycle-admin",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/wecycle/admin",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/wecycle/admin",
+        "outputPath": "dist/apps/wecycle/admin"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/wecycle/admin"
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "wecycle-admin:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "wecycle-admin:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "wecycle-admin:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nx/next:export",
+      "options": {
+        "buildTarget": "wecycle-admin:build:production"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/wecycle/admin/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": ["wecycle-admin"]
+}
