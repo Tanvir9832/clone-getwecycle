@@ -9,28 +9,12 @@ This document outlines the steps to set up the development environment for Wecyc
 
 Before proceeding with the installation, ensure that the following prerequisites are met:
 
-1. **Node.js**: Make sure you have Node.js installed on your machine. You can download the latest version of Node.js [here](https://nodejs.org/).
-   
-   To verify the installation, run the following command in your terminal:
-   ```bash
-   node -v
-   ```
-
-   You should see the installed version of Node.js.
-
-2. **npm (Node Package Manager)**: npm is installed automatically with Node.js. Verify it by running:
-   ```bash
-   npm -v
-   ```
-
-3. **Nx CLI**: Nx is a smart, fast, and extensible build system with first-class monorepo support. You need it installed globally to run the development commands.
-   
-   To install Nx CLI, run the following command:
-   ```bash
-   npm install -g nx
-   ```
+1. **Node.js (^18.16.0)**: Verify installation with `node -v`.
+2. **npm (Node Package Manager)**: Verify installation with `npm -v`.
+3. **Nx CLI (Optional)**: Install globally using `npm install -g nx`.
 
 ---
+
 
 ## Step 1: Install Node Modules
 
