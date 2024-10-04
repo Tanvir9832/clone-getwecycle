@@ -74,7 +74,7 @@ startJobs();
 //start job
 
 //serve app
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 9090;
 server.listen(port, () => {
   logger.info(`Server is running on port ${port}`);
 });

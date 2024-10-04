@@ -9,13 +9,17 @@ interface Email {
 }
 
 export const sendEmail = async (data: Email) => {
-  return sendGridMail.send({
-    from: {
-      name: "WeCycle",
-      email: "zahin@wecycle.io",
-    },
-    to: data.to,
-    subject: data.subject,
-    html: data.template,
-  });
+  try {
+    return sendGridMail.send({
+      from: {
+        name: "WeCycle",
+        email: "zahin@wecycle.io",
+      },
+      to: data.to,
+      subject: data.subject,
+      html: data.template,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };

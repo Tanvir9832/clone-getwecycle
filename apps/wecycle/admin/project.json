@@ -23,6 +23,7 @@
       "executor": "@nx/next:server",
       "defaultConfiguration": "development",
       "options": {
+        "port": 4203,
         "buildTarget": "wecycle-admin:build",
         "dev": true
       },

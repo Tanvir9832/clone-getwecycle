@@ -1,8 +1,0 @@
-{
-  "name": "react-native-utils",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/react-native-utils/src",
-  "projectType": "library",
-  "targets": {},
-  "tags": ["utils"]
-}
