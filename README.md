@@ -1,4 +1,3 @@
-
 # Wecycle Development Environment Setup
 
 This document outlines the steps to set up the development environment for Wecycle, including installing Node.js, running the development servers, and accessing the admin portal.
@@ -14,7 +13,6 @@ Before proceeding with the installation, ensure that the following prerequisites
 3. **Nx CLI (Optional)**: Install globally using `npm install -g nx`.
 
 ---
-
 
 ## Step 1: Install Node Modules
 
@@ -63,7 +61,7 @@ npx nx run wecycle-api:serve --configuration=development
 Once the admin server is running, you can log in to the admin portal using the following credentials:
 
 - **Username**: `dev@getwecycle.com`
-- **Password**: `123456789`
+- **Password**: `12345678`
 
 Make sure to change the password for production use.
 

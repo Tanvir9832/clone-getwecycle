@@ -1,4 +1,4 @@
-import { get_service } from "@tanbel/homezz/http-client";
+import { get_service, get_services } from "@tanbel/homezz/http-client";
 import { type GetMultiServicesDTO } from "@tanbel/homezz/types";
 import Image from "next/image";
 import dynamic from "next/dynamic";
@@ -11,6 +11,14 @@ const RequestQuoteForm = dynamic(
 );
 
 const BookService = ({ service }: { service: GetMultiServicesDTO }) => {
+  if (!service) {
+    return (
+      <div className="max-w-7xl mx-auto px-5 h-[calc(100vh-200px)] flex justify-center items-center">
+        <p className="text-4xl text-center my-10">Service not found</p>
+      </div>
+    );
+  }
+
   const { _id, title, description, cover, priceInputs: customInputs } = service;
 
   return (
@@ -44,12 +52,21 @@ export async function getServerSideProps(context: any) {
   const { query } = context;
   const serviceId = query.id;
   if (serviceId) {
-    const res = await get_service(serviceId);
-    return {
-      props: {
-        service: res,
-      },
-    };
+    try {
+      const res = await get_service(serviceId);
+      return {
+        props: {
+          service: res,
+        },
+      };
+    } catch (error) {
+      console.log(error);
+      return {
+        props: {
+          service: null,
+        },
+      };
+    }
   } else {
     return {
       props: {

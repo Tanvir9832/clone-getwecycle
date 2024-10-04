@@ -35,7 +35,7 @@ export function useHttp<TResponse, TError = null | Record<string, any>>(
       toggleLoading();
       if (error?.status === 401) {
         logout();
-        router.push("/login");
+        router.push("/auth/login");
       }
       throw error;
     }

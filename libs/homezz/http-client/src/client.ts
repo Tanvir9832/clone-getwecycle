@@ -1,4 +1,4 @@
-import { getLocal } from "@tanbel/utils";
+import { getLocal, isNodeJs } from "@tanbel/utils";
 import axios from "axios";
 export interface AxiosConfig {
   token?: string;
@@ -12,7 +12,10 @@ const $api = axios.create({
 
 $api.interceptors.request.use(
   async (config) => {
-    let localToken = getLocal("TOKEN");
+    let localToken;
+    if (!isNodeJs()) {
+      localToken = getLocal("token");
+    }
     config.headers.Authorization = `Bearer ${localToken}`;
     return config;
   },
@@ -30,9 +33,9 @@ $api.interceptors.response.use(
     return Promise.reject(
       errorResponse
         ? {
-          message: errorResponse?.data?.message,
-          status: errorResponse?.status,
-        }
+            message: errorResponse?.data?.message,
+            status: errorResponse?.status,
+          }
         : undefined
     );
   }

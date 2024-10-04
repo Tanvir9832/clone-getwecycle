@@ -67,6 +67,16 @@ export const login = async (req: IRequest<LoginDTO>, res) => {
       return res.status(404).json(failed({ issue: "User not found" }));
     }
 
+    // Check if password is correct
+    const isPasswordCorrect = await bcrypt.compare(
+      password,
+      existingUser.password
+    );
+
+    if (!isPasswordCorrect) {
+      return res.status(400).json(failed({ issue: "Invalid credentials" }));
+    }
+
     if (platform === Platforms.ADMIN_WEB) {
       const authorized = [
         UserType.ADMIN,
@@ -83,16 +93,6 @@ export const login = async (req: IRequest<LoginDTO>, res) => {
           .status(200)
           .json(success({ data: { jwtToken, user: existingUser } }));
       }
-    }
-
-    // Check if password is correct
-    const isPasswordCorrect = await bcrypt.compare(
-      password,
-      existingUser.password
-    );
-
-    if (!isPasswordCorrect) {
-      return res.status(400).json(failed({ issue: "Invalid credentials" }));
     }
 
     if (existingUser.verification.email === false) {
