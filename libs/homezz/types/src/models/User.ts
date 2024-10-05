@@ -5,7 +5,8 @@ export enum UserType {
     CONSUMER = 'CONSUMER',
     SUPER_ADMIN = 'SUPER_ADMIN',
     ADMIN = 'ADMIN',
-    BLOG_MANAGER = "BLOG_MANAGER"
+    BLOG_MANAGER = "BLOG_MANAGER",
+    CUSTOMER_SERVICE = "CUSTOMER_SERVICE"
 }
 
 export interface IUser {
