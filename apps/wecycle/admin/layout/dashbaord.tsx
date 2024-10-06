@@ -57,7 +57,7 @@ const navigation = [
     label: "Bookings",
     icon: <ICON.BOOK />,
     path: "/bookings",
-    access: [UserType.CUSTOMER_SERVICE],
+    access: [UserType.CUSTOMER_SERVICE, UserType.SUPER_ADMIN, UserType.ADMIN, UserType.PROVIDER],
   },
   {
     key: "5",
@@ -92,7 +92,7 @@ const navigation = [
     label: "Message",
     icon: <ICON.MESSAGE />,
     path: "/message",
-    access: [UserType.CUSTOMER_SERVICE],
+    access: [UserType.CUSTOMER_SERVICE, UserType.SUPER_ADMIN, UserType.ADMIN, UserType.PROVIDER],
   },
 ];
 
