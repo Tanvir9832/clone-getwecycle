@@ -73,6 +73,12 @@ const navigation = [
     icon: <ICON.LOGOUT />,
     path: "/",
   },
+  {
+    key: "8",
+    label: "OnBoarding",
+    icon: <ICON.PLUS />,
+    path: "/onboarding"
+  }
 ];
 
 const PrivateLayout = ({

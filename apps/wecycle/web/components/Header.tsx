@@ -77,7 +77,7 @@ const Header = () => {
           <li>
             <Link
               className="no-underline text-black hover:text-green-400 whitespace-nowrap"
-              href={"/contact"}
+              href={"/onboarding"}
             >
               Become Hauler
             </Link>

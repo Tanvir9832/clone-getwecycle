@@ -23,7 +23,7 @@ export const Footer = () => {
           </div>
           <div className="mt-6 space-y-2 text-md">
             <p className="my-1 text-xl  font-bold tracking-wide">Opportunity</p>
-            <Link href="/contact" className="text-white hover:text-green-200">
+            <Link href="/onboarding" className="text-white hover:text-green-200">
               Become Hauler
             </Link>
           </div>
