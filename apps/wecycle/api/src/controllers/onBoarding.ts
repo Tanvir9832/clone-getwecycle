@@ -16,7 +16,6 @@ export const createOnBoarding = async (
         const result = new OnBoarding({
             companyName, businessDocuments, compnayType, numberOfEmployee, paymentMethod, payoutInformation
         }).save();
-        console.log(companyName);
         res.status(201).json(success({ data: result }));
     } catch (error) {
         logger.error(error);

@@ -1,5 +1,10 @@
 import { Button, Input, Select, TextArea } from '@tanbel/react-ui';
 import React, { useState } from 'react';
+import { useHttp } from '../../hook/useHttp';
+import { create_onBoarding } from '@tanbel/homezz/http-client';
+import { toast } from 'react-toastify';
+import { CompanyType } from '@tanbel/homezz/types';
+
 
 function Index() {
   const formArray = [1, 2, 3];
@@ -11,17 +16,20 @@ function Index() {
     businessDocuments: '',
     payoutInformation: '',
     paymentMethod: '',
-  })
+  });
+  const [errorMessage,setErrorMessage] = useState({
+    companyName : "",
+    companyType : "",
+  });
 
   const inputHandle = (e) => {
     setState({
       ...state,
       [e.target.name]: e.target.value
     })
-    console.log(state);
   }
 
-
+  
   const handleSelectChange = (field: string, value: string) => {
     setState({
       ...state,
@@ -29,20 +37,33 @@ function Index() {
     })
   }
   const next = () => {
-    if (formNo === 1 && state.companyName && state.compnayType && state.numberOfEmployee) {
-      setFormNo(formNo + 1)
+    if(formNo===1 && !state.companyName){
+      setErrorMessage((prev)=>({ ...prev , companyName : "Company name must be filed" }))
+      return;
     }
-    else if (formNo === 2 && state.businessDocuments) {
+
+    if(formNo===1 && !state.compnayType){
+      setErrorMessage((prev)=>({ ...prev , companyType : "Company type must be selected" }))
+      return;
+    }
+
+    if (formNo === 1 || formNo === 2) {
       setFormNo(formNo + 1)
-    } else {
-      // toast.error('Please fillup all input field')
     }
   }
   const pre = () => {
     setFormNo(formNo - 1)
   }
+
+  const { loading, error, request } = useHttp(() => {
+    return create_onBoarding({ ...state });
+  });
   const finalSubmit = async() => {
-    console.log(state);
+    return request().then((res) => {
+      if (res) {
+        toast.success('Form data saved');
+      }
+    });
     
   }
   return (
@@ -64,10 +85,11 @@ function Index() {
             <h1 className='text-center mb-2'>Company Information</h1>
             <div className='flex flex-col mb-2'>
               <label>Company name : </label>
-              <Input value={state.companyName} name='companyName' placeholder='Enter the company name' onChange={inputHandle} />
+              <Input value={state.companyName} error={errorMessage['companyName']} name='companyName' placeholder='Enter the company name' onChange={inputHandle} />
             </div>
             <div className='flex flex-col mb-2'>
               <Select value={state.compnayType}
+              error={errorMessage['companyType']}
                 label='Company type : '
                 onChange={(value) => handleSelectChange('compnayType', value)} options={[{
                   label: "B2B",
@@ -124,7 +146,7 @@ function Index() {
             </div>
             <div className='mt-4 gap-3 flex justify-center items-center'>
               <Button onClick={pre} className='px-3 py-2 text-lg rounded-md w-full text-white'>Previous</Button>
-              <Button onClick={finalSubmit} className='px-3 py-2 text-lg rounded-md w-full text-white'>Submit</Button>
+              <Button onClick={finalSubmit} className='px-3 py-2 text-lg rounded-md w-full text-white'>{loading ? "Loading..." : "Submit"}</Button>
             </div>
           </div>
         }

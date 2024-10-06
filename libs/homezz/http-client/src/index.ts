@@ -14,3 +14,4 @@ export * from './user';
 export * from './blog';
 export * from './log';
 export * from './schedule';
+export * from './onBoarding';
