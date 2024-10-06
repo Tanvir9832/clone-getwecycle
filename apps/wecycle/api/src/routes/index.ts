@@ -16,6 +16,7 @@ import userRouter from './user';
 import blogRouter from './blogs';
 import logRouter from './log';
 import scheduleRouter from './sehedule';
+import onBoardingRouter from './onBoarding';
 
 const rootRouter = router.Router();
 
@@ -31,6 +32,7 @@ rootRouter.use('/', paymentRouter);
 rootRouter.use('/', appRouter);
 rootRouter.use('/', providerRequestRouter);
 rootRouter.use('/', notificationRouter);
+rootRouter.use('/', onBoardingRouter);
 rootRouter.use('/', userRouter);
 rootRouter.use('/', blogRouter);
 rootRouter.use('/', logRouter);

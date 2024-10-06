@@ -14,6 +14,7 @@ export * from './dashboard';
 export * from './blog';
 export * from './log';
 export * from './schedule';
+export * from './onBoarding';
 
 export type DTO<
   T,

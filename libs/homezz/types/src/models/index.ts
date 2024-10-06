@@ -17,3 +17,4 @@ export * from './Logger';
 export * from './Schedule';
 export * from './VerificationSession';
 export * from './Invoice';
+export * from './OnBoarding';
